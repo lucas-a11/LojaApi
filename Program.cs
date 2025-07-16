@@ -12,11 +12,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+
 
 var MySqlconnectionString = builder.Configuration.GetConnectionString("LojaContext");
 builder.Services.AddDbContext<AppDataContext>(options =>
     options.UseMySql(MySqlconnectionString, ServerVersion.AutoDetect(MySqlconnectionString)));
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
